@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:text="Add Event"
+        android:textSize="35dp"
+        android:textColor="#42A5F5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/titleText"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="5dp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nameLayout"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="10dp">
+        <ImageView
+            android:src="@drawable/ico_tag"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:id="@+id/nameIcon"
+            android:layout_gravity="center"
+            android:layout_weight="1" />
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/nameEntered"
+            android:layout_gravity="center"
+            android:layout_weight="3"
+            android:layout_marginRight="20dp"
+            android:hint="e.g. EDC Music Festival" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dayLayout"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp">
+        <ImageView
+            android:src="@drawable/ico_calendar"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:id="@+id/dayIcon"
+            android:layout_gravity="center"
+            android:layout_weight="1" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <Button
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:id="@+id/minusSign"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/ico_minus" />
+            <EditText
+                android:inputType="number"
+                android:layout_width="100dp"
+                android:textSize="20dp"
+                android:textColor="#42A5F5"
+                android:layout_height="50dp"
+                android:id="@+id/dayEntered"
+                android:layout_gravity="center"
+                android:hint="3"
+                android:gravity="center" />
+            <Button
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:id="@+id/plusSign"
+                android:gravity="center"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/ico_plus"
+                android:layout_gravity="center" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/categoryLayout"
+        android:gravity="center"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
+        <Button
+            android:text="VACATION"
+            android:textColor="#42A5F5"
+            android:fontFamily="sans-serif-light"
+            android:background="@drawable/button_wire_empty"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:id="@+id/vacationButton" />
+        <Button
+            android:text="SICK"
+            android:layout_width="0dp"
+            android:textColor="#42A5F5"
+            android:fontFamily="sans-serif-light"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:textSize="12dp"
+            android:background="@drawable/button_wire_empty"
+            android:layout_height="wrap_content"
+            android:id="@+id/sickButton" />
+        <Button
+            android:text="OTHER"
+            android:layout_width="0dp"
+            android:textColor="#42A5F5"
+            android:fontFamily="sans-serif-light"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:textSize="12dp"
+            android:background="@drawable/button_wire_empty"
+            android:layout_height="wrap_content"
+            android:id="@+id/otherButton" />
+    </LinearLayout>
+</LinearLayout>

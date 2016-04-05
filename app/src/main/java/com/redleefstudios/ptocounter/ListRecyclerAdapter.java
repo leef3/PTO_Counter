@@ -65,6 +65,7 @@ public class ListRecyclerAdapter extends RecyclerView.Adapter<ListRecyclerAdapte
                 return true;
             }
         });
+
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder

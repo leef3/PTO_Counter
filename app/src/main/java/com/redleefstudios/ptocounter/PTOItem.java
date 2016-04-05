@@ -9,7 +9,6 @@ public class PTOItem
     private Category type;
     private int days;
 
-
     public PTOItem(String event, Category type, int days)
     {
         this.event = event;
