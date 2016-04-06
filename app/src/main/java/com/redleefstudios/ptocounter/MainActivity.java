@@ -50,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
     //Data Storage
     public static final String MASTER_SAVE_NAME = "MASTER_SAVE_DATA_PTOPLANNER";
 
+    public final static String VACATION_TOTAL_SAVE_NAME = "VACATION_TOTAL_SAVE_DATA";
+    public final static String SICK_TOTAL_SAVE_NAME = "SICK_TOTAL_SAVE_DATA";
+    public final static String OTHER_TOTAL_SAVE_NAME = "OTHER_TOTAL_SAVE_DATA";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

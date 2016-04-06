@@ -19,6 +19,8 @@ public class SplashActivity extends AppCompatActivity {
     private final static String TUTORIAL_COMPLETED = "TUTORIAL_COMPLETED_BOOLEAN";
     private boolean tutorialComplete;
 
+    private int vacationTotal, sickTotal, otherTotal;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -33,6 +35,10 @@ public class SplashActivity extends AppCompatActivity {
 
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         tutorialComplete = prefs.getBoolean(TUTORIAL_COMPLETED, false);
+        vacationTotal = prefs.getInt(MainActivity.VACATION_TOTAL_SAVE_NAME, 15);
+        sickTotal = prefs.getInt(MainActivity.SICK_TOTAL_SAVE_NAME, 10);
+        otherTotal = prefs.getInt(MainActivity.OTHER_TOTAL_SAVE_NAME, 0);
+        tutorialComplete=false;
 
         new Handler().postDelayed(new Runnable() {
             @Override

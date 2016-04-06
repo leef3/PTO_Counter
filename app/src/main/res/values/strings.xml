@@ -9,5 +9,8 @@
     <string name="Tutorial_Title_2">App Controls</string>
     <string name="Tutorial_Description_2">Tap the add button to add. Tap an item to edit. Hold an item to show the delete bar. Tap the setup option in menu to rerun setup</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>

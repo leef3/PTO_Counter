@@ -15,14 +15,11 @@ public class TutorialActivity extends AppIntro {
     @Override
     public void init(Bundle savedInstanceState) {
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         // Instead of fragments, you can also use our default slide
         // Just set a title, description, background and image. AppIntro will do the rest
         addSlide(AppIntroFragment.newInstance(getString(R.string.Tutorial_Title_1), getString(R.string.Tutorial_Description_1), R.mipmap.ic_launcher, Color.parseColor("#26A69A")));
         addSlide(AppIntroFragment.newInstance(getString(R.string.Tutorial_Title_2), getString( R.string.Tutorial_Description_2), R.mipmap.ic_launcher, Color.parseColor("#26A69A")));
+        addSlide(new TimeSetupFragment());
 
         // OPTIONAL METHODS
         // Override bar/separator color
