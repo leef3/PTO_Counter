@@ -7,7 +7,7 @@
     <TextView
         android:text="Add Event"
         android:textSize="35dp"
-        android:textColor="#42A5F5"
+        android:textColor="@color/colorAccent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/titleText"
@@ -76,7 +76,7 @@
                 android:inputType="number"
                 android:layout_width="100dp"
                 android:textSize="20dp"
-                android:textColor="#42A5F5"
+                android:textColor="@color/colorAccent"
                 android:layout_height="50dp"
                 android:id="@+id/dayEntered"
                 android:layout_gravity="center"
@@ -106,7 +106,7 @@
         android:layout_marginBottom="5dp">
         <Button
             android:text="VACATION"
-            android:textColor="#42A5F5"
+            android:textColor="@color/colorAccent"
             android:fontFamily="sans-serif-light"
             android:background="@drawable/button_wire_empty"
             android:layout_width="0dp"
@@ -118,7 +118,7 @@
         <Button
             android:text="SICK"
             android:layout_width="0dp"
-            android:textColor="#42A5F5"
+            android:textColor="@color/colorAccent"
             android:fontFamily="sans-serif-light"
             android:layout_weight="1"
             android:layout_margin="5dp"
@@ -129,7 +129,7 @@
         <Button
             android:text="OTHER"
             android:layout_width="0dp"
-            android:textColor="#42A5F5"
+            android:textColor="@color/colorAccent"
             android:fontFamily="sans-serif-light"
             android:layout_weight="1"
             android:layout_margin="5dp"
