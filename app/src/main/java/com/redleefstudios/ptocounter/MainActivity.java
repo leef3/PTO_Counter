@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         totalOther = (TextView) findViewById(R.id.othercount);
 
         mData = new ArrayList<PTOItem>();
+        loadData();
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
@@ -91,6 +92,13 @@ public class MainActivity extends AppCompatActivity {
         RecalculateStatistics();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        saveData();
+    }
+
+
     public void onItemClicked(int position)
     {
         ShowDialog(position);
@@ -104,7 +112,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
+
                 mData.remove(position);
+                mAdapter.notifyDataSetChanged();
             }
         };
 
@@ -195,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
 
               //Set the selected one
               Button test = (Button)v;
-              test.setBackgroundColor(Color.parseColor("#42A5F5"));
+              test.setBackgroundResource(R.drawable.button_wire_filled_blue);
               test.setTextColor(Color.parseColor("#EEEEEE"));
               toChange.SetType(Category.valueOf(test.getText().toString()));
           }
@@ -293,7 +303,6 @@ public class MainActivity extends AppCompatActivity {
     {
         mData.clear();
         SharedPreferences settings = context.getSharedPreferences("pref", 0);
-        settings = context.getSharedPreferences("pref", 0);
         String objectData = settings.getString(MASTER_SAVE_NAME, "");
         if (!objectData.equals("")) {
             System.out.println("Object Data: " + objectData);

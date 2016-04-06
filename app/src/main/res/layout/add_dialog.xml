@@ -35,7 +35,8 @@
             android:layout_gravity="center"
             android:layout_weight="3"
             android:layout_marginRight="20dp"
-            android:hint="e.g. EDC Music Festival" />
+            android:hint="e.g. EDC Music Festival"
+            android:capitalize="sentences" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
@@ -79,7 +80,7 @@
                 android:layout_height="50dp"
                 android:id="@+id/dayEntered"
                 android:layout_gravity="center"
-                android:hint="3"
+                android:hint="#"
                 android:gravity="center" />
             <Button
                 android:layout_width="35dp"

@@ -55,16 +55,20 @@
                 android:layout_marginLeft="5dp" />
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="12dp"
                 android:layout_below="@+id/cardTextLarge"
                 android:layout_toRightOf="@+id/small_card_divider"
-                android:textColor="#9E9E9E"
+                android:textColor="#EEEEEE"
                 android:text="Subtext for the Item"
                 android:id="@+id/cardTextSmall"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="5dp" />
+                android:layout_marginLeft="5dp"
+                android:paddingRight="8dp"
+                android:paddingLeft="8dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp" />
 
 
         </RelativeLayout>

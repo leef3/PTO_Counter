@@ -47,6 +47,18 @@ public class ListRecyclerAdapter extends RecyclerView.Adapter<ListRecyclerAdapte
     {
         viewHolder.mLargeText.setText(itemData.get(position).GetEvent());
         viewHolder.mSmallText.setText(itemData.get(position).GetType().name());
+        //Set color Categories
+        switch(itemData.get(position).GetType())
+        {
+            case VACATION:
+                viewHolder.mSmallText.setBackgroundResource(R.drawable.button_wire_filled_green);
+                break;
+            case SICK:
+                viewHolder.mSmallText.setBackgroundResource(R.drawable.button_wire_filled_orange);
+                break;
+            case OTHER:
+                viewHolder.mSmallText.setBackgroundResource(R.drawable.button_wire_filled_grey);
+        }
         viewHolder.mImage.setText(itemData.get(position).GetDays() + "");
 
         viewHolder.itemLayoutView.setOnClickListener(new View.OnClickListener() {
