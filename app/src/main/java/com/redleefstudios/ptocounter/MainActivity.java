@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -119,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
                 mData.remove(position);
                 mAdapter.notifyDataSetChanged();
+                RecalculateStatistics();
             }
         };
 
@@ -258,8 +260,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void RecalculateStatistics()
     {
-        int vacationCount, sickCount, otherCount;
-        vacationCount = sickCount = otherCount = 15;
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        int vacationCount = prefs.getInt(MainActivity.VACATION_TOTAL_SAVE_NAME, 0);
+        int sickCount = prefs.getInt(MainActivity.SICK_TOTAL_SAVE_NAME, 0);
+        int otherCount = prefs.getInt(MainActivity.OTHER_TOTAL_SAVE_NAME, 0);
+
         for(int x = 0; x < mData.size(); x++)
         {
             switch(mData.get(x).GetType())

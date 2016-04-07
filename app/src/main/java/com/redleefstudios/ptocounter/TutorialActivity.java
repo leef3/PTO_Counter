@@ -1,11 +1,17 @@
 package com.redleefstudios.ptocounter;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 
 import com.github.paolorotolo.appintro.AppIntro;
 import com.github.paolorotolo.appintro.AppIntroFragment;
@@ -19,7 +25,9 @@ public class TutorialActivity extends AppIntro {
         // Just set a title, description, background and image. AppIntro will do the rest
         addSlide(AppIntroFragment.newInstance(getString(R.string.Tutorial_Title_1), getString(R.string.Tutorial_Description_1), R.mipmap.ic_launcher, Color.parseColor("#26A69A")));
         addSlide(AppIntroFragment.newInstance(getString(R.string.Tutorial_Title_2), getString( R.string.Tutorial_Description_2), R.mipmap.ic_launcher, Color.parseColor("#26A69A")));
-        addSlide(new TimeSetupFragment());
+        addSlide(TimeSetupFragment.newInstance("Vacation Total", "Enter your annual Vacation allowance", Color.parseColor("#26A69A"), Category.VACATION));
+        addSlide(TimeSetupFragment.newInstance("Sick Time Total", "Enter your annual Sick Time allowance", Color.parseColor("#26A69A"), Category.SICK));
+        addSlide(TimeSetupFragment.newInstance("Other Total", "Enter your annual Other allowance", Color.parseColor("#26A69A"), Category.OTHER));
 
         // OPTIONAL METHODS
         // Override bar/separator color
@@ -29,8 +37,24 @@ public class TutorialActivity extends AppIntro {
 
 
         // Hide Skip/Done button
-        showSkipButton(true);
         showDoneButton(true);
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            View v = getCurrentFocus();
+            if ( v instanceof EditText) {
+                Rect outRect = new Rect();
+                v.getGlobalVisibleRect(outRect);
+                if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
+                    v.clearFocus();
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
+            }
+        }
+        return super.dispatchTouchEvent( event );
     }
 
     @Override
