@@ -13,6 +13,18 @@
         android:id="@+id/titleText"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Invalid Text"
+        android:id="@+id/eventEditError"
+        android:layout_gravity="right"
+        android:layout_marginRight="30dp"
+        android:textColor="#D32F2F"
+        android:visibility="invisible" />
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -35,9 +47,21 @@
             android:layout_gravity="center"
             android:layout_weight="3"
             android:layout_marginRight="20dp"
-            android:hint="e.g. EDC Music Festival"
+            android:hint="e.g. Bahamas"
             android:capitalize="sentences" />
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Invalid Text"
+        android:id="@+id/dayEditError"
+        android:layout_gravity="right"
+        android:layout_marginRight="30dp"
+        android:textColor="#D32F2F"
+        android:visibility="invisible"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -81,7 +105,9 @@
                 android:id="@+id/dayEntered"
                 android:layout_gravity="center"
                 android:hint="#"
-                android:gravity="center" />
+                android:gravity="center"
+                android:numeric="signed"
+                android:text="1" />
             <Button
                 android:layout_width="35dp"
                 android:layout_height="35dp"
@@ -107,7 +133,6 @@
         <Button
             android:text="VACATION"
             android:textColor="@color/colorAccent"
-            android:fontFamily="sans-serif-light"
             android:background="@drawable/button_wire_empty"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -119,18 +144,17 @@
             android:text="SICK"
             android:layout_width="0dp"
             android:textColor="@color/colorAccent"
-            android:fontFamily="sans-serif-light"
             android:layout_weight="1"
             android:layout_margin="5dp"
             android:textSize="12dp"
             android:background="@drawable/button_wire_empty"
             android:layout_height="wrap_content"
-            android:id="@+id/sickButton" />
+            android:id="@+id/sickButton"
+            android:focusableInTouchMode="false" />
         <Button
             android:text="OTHER"
             android:layout_width="0dp"
             android:textColor="@color/colorAccent"
-            android:fontFamily="sans-serif-light"
             android:layout_weight="1"
             android:layout_margin="5dp"
             android:textSize="12dp"

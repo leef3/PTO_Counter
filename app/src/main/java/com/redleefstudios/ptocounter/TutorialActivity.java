@@ -23,11 +23,11 @@ public class TutorialActivity extends AppIntro {
 
         // Instead of fragments, you can also use our default slide
         // Just set a title, description, background and image. AppIntro will do the rest
-        addSlide(AppIntroFragment.newInstance(getString(R.string.Tutorial_Title_1), getString(R.string.Tutorial_Description_1), R.mipmap.ic_launcher, Color.parseColor("#26A69A")));
-        addSlide(AppIntroFragment.newInstance(getString(R.string.Tutorial_Title_2), getString( R.string.Tutorial_Description_2), R.mipmap.ic_launcher, Color.parseColor("#26A69A")));
-        addSlide(TimeSetupFragment.newInstance("Vacation Total", "Enter your annual Vacation allowance", Color.parseColor("#26A69A"), Category.VACATION));
-        addSlide(TimeSetupFragment.newInstance("Sick Time Total", "Enter your annual Sick Time allowance", Color.parseColor("#26A69A"), Category.SICK));
-        addSlide(TimeSetupFragment.newInstance("Other Total", "Enter your annual Other allowance", Color.parseColor("#26A69A"), Category.OTHER));
+        addSlide(AppIntroFragment.newInstance(getString(R.string.Tutorial_Title_1), getString(R.string.Tutorial_Description_1), R.drawable.ico_setup_calendar, Color.parseColor("#26A69A")));
+        addSlide(AppIntroFragment.newInstance(getString(R.string.Tutorial_Title_2), getString( R.string.Tutorial_Description_2), R.drawable.ico_setup_gesture, Color.parseColor("#26A69A")));
+        addSlide(TimeSetupFragment.newInstance("Vacation Total", "Annual vacation allowance", Color.parseColor("#26A69A"), Category.VACATION));
+        addSlide(TimeSetupFragment.newInstance("Sick Time Total", "Annual sick time allowance", Color.parseColor("#26A69A"), Category.SICK));
+        addSlide(TimeSetupFragment.newInstance("Other Total", "Other time off", Color.parseColor("#26A69A"), Category.OTHER));
 
         // OPTIONAL METHODS
         // Override bar/separator color
@@ -38,6 +38,7 @@ public class TutorialActivity extends AppIntro {
 
         // Hide Skip/Done button
         showDoneButton(true);
+        showSkipButton(false);
     }
 
     @Override

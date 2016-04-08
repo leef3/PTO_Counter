@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -78,7 +79,7 @@ public class TimeSetupFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.setup_fragment, container, false);
+        final View v = inflater.inflate(R.layout.setup_fragment, container, false);
         TextView t = (TextView) v.findViewById(R.id.title);
         TextView d = (TextView) v.findViewById(R.id.description);
         EditText ptoNumber = (EditText) v.findViewById(R.id.ptoNumber);
@@ -113,6 +114,48 @@ public class TimeSetupFragment extends Fragment {
 
         m.setBackgroundColor(bgColor);
 
+        Button plusButton = (Button) v.findViewById(R.id.setupArrowRight);
+        Button minusButton = (Button) v.findViewById(R.id.setupArrowLeft);
+        plusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText ptoNumber = (EditText) v.findViewById(R.id.ptoNumber);
+                if (ptoNumber.getText().length() > 0) {
+                    int days = Integer.parseInt(ptoNumber.getText().toString());
+                    days++;
+                    ptoNumber.setText(days + "");
+
+                    ptoNumber.getOnFocusChangeListener().onFocusChange(ptoNumber, false);
+                } else {
+                    ptoNumber.setText(1 + "");
+                    ptoNumber.getOnFocusChangeListener().onFocusChange(ptoNumber, false);
+                }
+
+            }
+        });
+
+        minusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText ptoNumber = (EditText) v.findViewById(R.id.ptoNumber);
+
+                if (ptoNumber.getText().length() > 0) {
+                    int days = Integer.parseInt(ptoNumber.getText().toString());
+                    if(days > 0)
+                    {
+                        days--;
+                    }
+                    ptoNumber.setText(days + "");
+
+                    ptoNumber.getOnFocusChangeListener().onFocusChange(ptoNumber, false);
+                } else {
+                    ptoNumber.setText(1 + "");
+                    ptoNumber.getOnFocusChangeListener().onFocusChange(ptoNumber, false);
+                }
+
+            }
+        });
+
         ptoNumber.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
@@ -140,6 +183,9 @@ public class TimeSetupFragment extends Fragment {
                 }
             }
         });
+
+
+
 
         return v;
     }

@@ -15,6 +15,8 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
@@ -157,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //Days Edit Text
-        EditText daysEdit = (EditText)customView.findViewById(R.id.dayEntered);
+        final EditText daysEdit = (EditText)customView.findViewById(R.id.dayEntered);
         daysEdit.setText(toEdit.GetDays() + "");
         //Name Edit Text
         EditText nameEdit = (EditText)customView.findViewById(R.id.nameEntered);
@@ -170,22 +172,68 @@ public class MainActivity extends AppCompatActivity {
         plusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText daysChange = (EditText)customView.findViewById(R.id.dayEntered);
-                int days = Integer.parseInt(daysChange.getText().toString());
-                days++;
-                toChange.SetDays(days);
-                daysChange.setText(days + "");
+                if(daysEdit.getText().length() > 0)
+                {
+                    int days = Integer.parseInt(daysEdit.getText().toString());
+                    days++;
+                    toChange.SetDays(days);
+                    daysEdit.setText(days + "");
+                }
+                else
+                {
+                    daysEdit.setText(1 + "");
+                }
+
             }
         });
 
         minusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText daysChange = (EditText)customView.findViewById(R.id.dayEntered);
-                int days = Integer.parseInt(daysChange.getText().toString());
-                days--;
-                toChange.SetDays(days);
-                daysChange.setText(days + "");
+
+                if(daysEdit.getText().length() > 0)
+                {
+                    int days = Integer.parseInt(daysEdit.getText().toString());
+                    days--;
+                    toChange.SetDays(days);
+                    daysEdit.setText(days + "");
+                }
+                else
+                {
+                    daysEdit.setText(1 + "");
+                }
+
+            }
+        });
+
+        daysEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                TextView dayError = (TextView)customView.findViewById(R.id.dayEditError);
+                if(s.length() > 0)
+                {
+                    int days = Integer.parseInt(daysEdit.getText().toString());
+                    if(days < 1)
+                    {
+                        dayError.setVisibility(View.VISIBLE);
+                        dayError.setText("Day count must be positive");
+                        daysEdit.setText(1 + "");
+                    }
+                    else
+                    {
+                        dayError.setVisibility(View.INVISIBLE);
+                    }
+                }
             }
         });
 
@@ -236,27 +284,69 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Add the buttons
-        builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                // User clicked OK button
-
-                //Create the new PTOItem
-                EditText nameEdit = (EditText)customView.findViewById(R.id.nameEntered);
-                toChange.SetEvent(nameEdit.getText().toString());
-                if(position > 0) {mData.remove(position);}
-                mData.add(toChange);
-                mAdapter.notifyDataSetChanged();
-                RecalculateStatistics();
-            }
-        });
+        builder.setPositiveButton("Save", null);
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 // User cancelled the dialog
             }
         });
 
-        builder.create().show();
+        final AlertDialog mDialog = builder.create();
+
+
+
+        mDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialog) {
+
+                Button b = mDialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                b.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View view) {
+                        // User clicked OK button
+
+                        //Create the new PTOItem
+                        final EditText nameEdit = (EditText) customView.findViewById(R.id.nameEntered);
+                        final EditText dayEdit = (EditText) customView.findViewById(R.id.dayEntered);
+
+                        if ((nameEdit.getText().toString().length() > 0) && (dayEdit.getText().toString().length() > 0)) {
+                            toChange.SetDays(Integer.parseInt(dayEdit.getText().toString()));
+                            toChange.SetEvent(nameEdit.getText().toString());
+                            if (position > 0) {
+                                mData.remove(position);
+                            }
+                            mData.add(toChange);
+                            mAdapter.notifyDataSetChanged();
+                            RecalculateStatistics();
+                            mDialog.dismiss();
+                        } else {
+                            TextView nameError = (TextView) customView.findViewById(R.id.eventEditError);
+                            TextView dayError = (TextView) customView.findViewById(R.id.dayEditError);
+
+                            nameError.setVisibility(View.INVISIBLE);
+                            dayError.setVisibility(View.INVISIBLE);
+
+                            if (nameEdit.getText().toString().equals("")) {
+
+                                nameError.setVisibility(View.VISIBLE);
+                                nameError.setText("Event name cannot be blank");
+                            }
+                            if (dayEdit.getText().toString().length() < 1) {
+
+                                dayError.setVisibility(View.VISIBLE);
+                                dayError.setText("Day count cannot be blank");
+                            }
+                        }
+
+                    }
+                });
+            }
+        });
+
+        mDialog.show();
+
     }
+
+
 
     public void RecalculateStatistics()
     {
