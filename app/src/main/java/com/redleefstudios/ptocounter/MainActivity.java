@@ -85,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
         mData = new ArrayList<PTOItem>();
         loadData();
 
+        AppRater.app_launched(this);
+
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
         // 2. set layoutManger
