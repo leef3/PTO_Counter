@@ -33,7 +33,6 @@ public class SplashActivity extends AppCompatActivity {
 
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         tutorialComplete = prefs.getBoolean(TUTORIAL_COMPLETED, false);
-        tutorialComplete=false;
 
         new Handler().postDelayed(new Runnable() {
             @Override

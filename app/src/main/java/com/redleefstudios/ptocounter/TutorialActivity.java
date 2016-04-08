@@ -27,7 +27,7 @@ public class TutorialActivity extends AppIntro {
         addSlide(AppIntroFragment.newInstance(getString(R.string.Tutorial_Title_2), getString( R.string.Tutorial_Description_2), R.drawable.ico_setup_gesture, Color.parseColor("#26A69A")));
         addSlide(TimeSetupFragment.newInstance("Vacation Total", "Annual vacation allowance", Color.parseColor("#26A69A"), Category.VACATION));
         addSlide(TimeSetupFragment.newInstance("Sick Time Total", "Annual sick time allowance", Color.parseColor("#26A69A"), Category.SICK));
-        addSlide(TimeSetupFragment.newInstance("Other Total", "Other time off", Color.parseColor("#26A69A"), Category.OTHER));
+        addSlide(TimeSetupFragment.newInstance("Other Total", "Personal Time, Holidays, Maternity / Paternity Leave etc.", Color.parseColor("#26A69A"), Category.OTHER));
 
         // OPTIONAL METHODS
         // Override bar/separator color
